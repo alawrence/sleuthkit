@@ -85,4 +85,21 @@ public abstract class AbstractContent implements Content {
 	public ArrayList<BlackboardArtifact> getAllArtifacts() throws TskException{
 		return db.getMatchingArtifacts("WHERE obj_id = " + obj_id);
 	}
+	
+	@Override
+	public ArrayList<BlackboardAttribute> getAttributes(String attributeTypeName) throws TskException{
+		return db.getMatchingAttributes("WHERE obj_id = " + obj_id + " AND attribute_type_id = " + db.getAttrTypeID(attributeTypeName));
+	}
+	@Override
+	public ArrayList<BlackboardAttribute> getAttributes(int attributeTypeID) throws TskException{
+		return db.getMatchingAttributes("WHERE obj_id = " + obj_id + " AND attribute_type_id = " + attributeTypeID);
+	}
+	@Override
+	public ArrayList<BlackboardAttribute> getAttributes(BlackboardAttribute.ATTRIBUTE_TYPE type) throws TskException{
+		return db.getMatchingAttributes("WHERE obj_id = " + obj_id + " AND attribute_type_id = " + type.getTypeID());
+	}
+	@Override
+	public ArrayList<BlackboardAttribute> getAllAttributes() throws TskException{
+		return db.getMatchingAttributes("WHERE obj_id = " + obj_id);
+	}
 }

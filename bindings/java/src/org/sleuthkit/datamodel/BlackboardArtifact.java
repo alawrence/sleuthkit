@@ -184,6 +184,7 @@ public class BlackboardArtifact implements SleuthkitVisitableItem{
 	public void addAttribute(BlackboardAttribute attr) throws TskException{
 		attr.setArtifactID(artifactID);
 		attr.setCase(Case);
+		attr.setObjectID(objID);
 		Case.addBlackboardAttribute(attr);
 	}
 	
@@ -199,6 +200,7 @@ public class BlackboardArtifact implements SleuthkitVisitableItem{
 		for (BlackboardAttribute attr : attributes) {
 			attr.setArtifactID(artifactID);
 			attr.setCase(Case);
+			attr.setObjectID(objID);
 		}
 		Case.addBlackboardAttributes(attributes);
 	}

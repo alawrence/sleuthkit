@@ -114,4 +114,35 @@ public interface Content extends SleuthkitVisitableItem{
 	 * @throws TskException
 	 */
 	public ArrayList<BlackboardArtifact> getAllArtifacts() throws TskException;
+	
+	/**
+	 * Get all attribute associated with this content that have the given type name
+	 * @param attributeTypeName name of the type to look up
+	 * @return a list of blackboard attributes
+	 * @throws TskException
+	 */
+	public ArrayList<BlackboardAttribute> getAttributes(String attributeTypeName) throws TskException;
+	
+	/**
+	 * Get all attributes associated with this content that have the given type id
+	 * @param attributeTypeID type id to look up
+	 * @return a list of blackboard attributes
+	 * @throws TskException
+	 */
+	public ArrayList<BlackboardAttribute> getAttributes(int attributeTypeID) throws TskException;
+	
+	/**
+	 * Get all attributes associated with this content that have the given type
+	 * @param type type to look up
+	 * @return a list of blackboard attributes
+	 * @throws TskException
+	 */
+	public ArrayList<BlackboardAttribute> getAttributes(BlackboardAttribute.ATTRIBUTE_TYPE type) throws TskException;
+	
+	/**
+	 * Get all attributes associated with this content
+	 * @return a list of blackboard attributes
+	 * @throws TskException
+	 */
+	public ArrayList<BlackboardAttribute> getAllAttributes() throws TskException;
 }

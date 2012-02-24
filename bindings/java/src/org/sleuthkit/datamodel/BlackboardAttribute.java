@@ -25,6 +25,7 @@ package org.sleuthkit.datamodel;
 public class BlackboardAttribute {
 
 	private long artifactID;
+	private long objID;
 	private int attributeTypeID;
 	private String moduleName;
 	private String context;
@@ -182,7 +183,7 @@ public class BlackboardAttribute {
 	 */
 	protected BlackboardAttribute(long artifactID, int attributeTypeID, String moduleName, String context,
 			TSK_BLACKBOARD_ATTRIBUTE_VALUE_TYPE valueType, int valueInt, long valueLong, double valueDouble,
-			String valueString, byte[] valueBytes, SleuthkitCase Case) {
+			String valueString, byte[] valueBytes, SleuthkitCase Case, long objID) {
 
 		this.artifactID = artifactID;
 		this.attributeTypeID = attributeTypeID;
@@ -195,6 +196,7 @@ public class BlackboardAttribute {
 		this.valueString = valueString;
 		this.valueBytes = valueBytes;
 		this.Case = Case;
+		this.objID = objID;
 	}
 
 	/**
@@ -409,6 +411,14 @@ public class BlackboardAttribute {
 	}
 
 	/**
+	 * get object id
+	 * @return object id
+	 */
+	public long getObjectID(){
+		return objID;
+	}
+	
+	/**
 	 * get the artifact that this is associated (which can be used to find the associated
 	 * file
 	 * @return artifact
@@ -424,6 +434,14 @@ public class BlackboardAttribute {
 	 */
 	protected void setArtifactID(long artifactID) {
 		this.artifactID = artifactID;
+	}
+	
+	/**
+	 * set the objectID, this should only be used by sleuthkitCase
+	 * @param objectID objectID
+	 */
+	protected void setObjectID(long objectID) {
+		this.objID = objectID;
 	}
 
 	/**
